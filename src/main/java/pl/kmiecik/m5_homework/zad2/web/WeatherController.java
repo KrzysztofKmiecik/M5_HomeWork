@@ -1,47 +1,73 @@
 package pl.kmiecik.m5_homework.zad2.web;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
+import pl.kmiecik.m5_homework.zad2.application.port.WeatherUseCase;
 import pl.kmiecik.m5_homework.zad2.domain.City;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 @Controller
 @RequestMapping("/weather")
 public class WeatherController {
 
-    RestTemplate restTemplate;
-    City city;
+    private final WeatherUseCase weatherService;
+    private City city;
 
-
-    public WeatherController() {
-        this.restTemplate = new RestTemplate();
-        this.city = new City("london");
+    @Autowired
+    public WeatherController(WeatherUseCase weatherService) {
+        this.weatherService = weatherService;
+        city = new City("Warsaw");
     }
 
     @GetMapping()
     public String getWeather(Model model) {
-        JsonNode[] latt_longJsonNode = restTemplate.getForObject("https://www.metaweather.com/api/location/search/?query=" + this.city.getName(), JsonNode[].class);
-        String latt_long = latt_longJsonNode[0].get("latt_long").asText();
-        System.out.println(latt_long);
-        String[] coordinates = latt_long.split(",");
-        String lat = coordinates[0];
-        String lon = coordinates[1];
-        String src = "http://www.7timer.info/bin/astro.php?lon=" + lon + "&lat=" + lat + "&ac=0&lang=en&unit=metric&output=internal&tzshift=0";
+        String src = weatherService.getWeather(this.city);
         model.addAttribute("city", this.city);
         model.addAttribute("src", src);
         return "weatherView";
     }
 
     @PostMapping
-    public String postCity(@ModelAttribute City city) {
-        this.city.setName(city.getName());
+    public String postCity(@ModelAttribute @Valid CityCommand command) {
+        this.city.setName(command.toCity().getName());
         return "redirect:/weather";
     }
 
 
+    public void setCity(final String city) {
+        this.city.setName(city);
+    }
+
+    private static class CityCommand {
+        @NotBlank
+        private String name;
+
+
+        public CityCommand(String name) {
+            this.name = name;
+        }
+
+        public CityCommand() {
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public City toCity() {
+            return new City(name);
+
+        }
+    }
 }
