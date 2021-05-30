@@ -13,7 +13,7 @@ Z wykorzystaniem swojego ulubionego narzędzia do tworzenia GUI wyświetl wszyst
 - [x] Połącz się z serwisem pogodowym i stwórz widok, który umożliwia na wprowadzanie miasta do pola tekstowego miasta. Po zatwierdzeniu przyciskiem wyświetli się aktualna pogoda dla danej miejscowości wraz z odzwierciedlającą pogodę grafiką.
 
 ## Zadanie 3 – gra walutowa
-- [ ] Pobierz aktualny kursy walut. W momencie, kiedy gracz wejdzie do gry wyświetla mu się losowo wybrana waluta, której kurs względem złotówki musi odgadnąć.
+- [x] Pobierz aktualny kursy walut. W momencie, kiedy gracz wejdzie do gry wyświetla mu się losowo wybrana waluta, której kurs względem złotówki musi odgadnąć.
 Np.
 Aplikacja: Wprowadź aktualną kurs USD uwzględniając 2 miejsca po przecinku
 Użytkownik: 4,20
