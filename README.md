@@ -10,7 +10,7 @@ Następnie skomunikuj się z usługą poprzez wykorzystanie klasy RestTemplate.
 Z wykorzystaniem swojego ulubionego narzędzia do tworzenia GUI wyświetl wszystkie dane we formie tabelarycznej.
 
 ## Zadanie 2 – pogodynka
-- [ ] Połącz się z serwisem pogodowym i stwórz widok, który umożliwia na wprowadzanie miasta do pola tekstowego miasta. Po zatwierdzeniu przyciskiem wyświetli się aktualna pogoda dla danej miejscowości wraz z odzwierciedlającą pogodę grafiką.
+- [x] Połącz się z serwisem pogodowym i stwórz widok, który umożliwia na wprowadzanie miasta do pola tekstowego miasta. Po zatwierdzeniu przyciskiem wyświetli się aktualna pogoda dla danej miejscowości wraz z odzwierciedlającą pogodę grafiką.
 
 ## Zadanie 3 – gra walutowa
 - [ ] Pobierz aktualny kursy walut. W momencie, kiedy gracz wejdzie do gry wyświetla mu się losowo wybrana waluta, której kurs względem złotówki musi odgadnąć.
