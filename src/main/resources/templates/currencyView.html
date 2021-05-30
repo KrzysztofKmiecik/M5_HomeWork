@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${rate.getCurrency()}">CurrencyName</p>
+<p th:text="${rate.getCode()}">Code</p>
+<p th:text="${hint}"> calculated currency sell exchange rate</p>
+
+<form th:action="@{/currency}" method="post" th:object="${newRate}">
+    <p><input type="text" th:field="*{ask}"></p>
+    <p><input type="submit">Check</p>
+</form>
+
+<p th:text="${message}"></p>
+
+</body>
+</html>
