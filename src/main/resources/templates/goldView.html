@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>GOLD</h1>
+<table>
+<th>
+    <tr>Data</tr>
+    <tr>Cena PLN/gram </tr>
+</th>
+    <tr th:each="gold:${golds}">
+        <td th:text="${gold.getData()}"></td>
+        <td th:text="${gold.getCena()}"></td>
+    </tr>
+</table>
+</body>
+</html>
